@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.ChickySpells" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/paper</item>
+        <item name="android:statusBarColor">@color/sun</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
