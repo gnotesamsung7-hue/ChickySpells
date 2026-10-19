@@ -9,6 +9,7 @@ import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebView
@@ -58,7 +59,14 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             tts?.setLanguage(Locale.US)
-            tts?.setPitch(1.25f)   // a bit higher for a cheerful little rooster
+            tts?.setPitch(1.25f)   // a bit higher for a cheerful little chicken
+            // Tell the page when Chicky finishes talking, so the mic can start listening right after
+            tts?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                override fun onStart(utteranceId: String?) {}
+                override fun onDone(utteranceId: String?) { js("window.__chicky&&__chicky.spoke(${q(utteranceId ?: "")})") }
+                @Deprecated("Deprecated in Java")
+                override fun onError(utteranceId: String?) { js("window.__chicky&&__chicky.spoke(${q(utteranceId ?: "")})") }
+            })
             ttsReady = true
         }
     }
@@ -68,14 +76,18 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     inner class Bridge {
         @JavascriptInterface
-        fun speak(text: String, rate: Double) {
-            if (!ttsReady) return
+        fun speak(text: String, rate: Double, id: String) {
+            if (!ttsReady) { js("window.__chicky&&__chicky.spoke(${q(id)})"); return }
             tts?.setSpeechRate(rate.toFloat().coerceIn(0.3f, 1.5f))
-            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "chicky")
+            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, id)
         }
 
         @JavascriptInterface
         fun stopSpeaking() { tts?.stop() }
+
+        // Chicky's chicken voice is a higher pitch; the page sets it before each line
+        @JavascriptInterface
+        fun setPitch(p: Double) { tts?.setPitch(p.toFloat().coerceIn(0.5f, 2.0f)) }
 
         @JavascriptInterface
         fun startListening() = runOnUiThread { beginListening() }

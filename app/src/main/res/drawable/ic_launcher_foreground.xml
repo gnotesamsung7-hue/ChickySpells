@@ -22,4 +22,10 @@
     <!-- wattle -->
     <path android:fillColor="#E2486A" android:strokeColor="#25304A" android:strokeWidth="2"
         android:pathData="M51,66 Q48,75 54,76 Q60,75 57,66 Z"/>
+    <!-- school cap -->
+    <path android:fillColor="#2B3A86" android:strokeColor="#25304A" android:strokeWidth="2"
+        android:pathData="M42,34 L42,40 Q54,46 66,40 L66,34 Z"/>
+    <path android:fillColor="#3A4DB0" android:strokeColor="#25304A" android:strokeWidth="2"
+        android:pathData="M30,31 L54,21 L78,31 L54,41 Z"/>
+    <path android:strokeColor="#FFC83D" android:strokeWidth="2" android:pathData="M54,31 L73,35 L73,45"/>
 </vector>

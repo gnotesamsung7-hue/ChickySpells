@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#FFC83D">
-<title>Chicky Spells</title>
+<title>Chicky School</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Fredoka:wght@500;600;700&display=swap">
 <style>
@@ -150,6 +150,81 @@ th{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--soft
   .bubble{font-size:18px}
   body{background-image:repeating-linear-gradient(180deg,transparent 0 35px,var(--rule) 35px 36px)}
 }
+
+/* Home activities, streak, goal, badges */
+.streakpill{display:inline-flex;align-items:center;gap:6px;background:#FFE0D2;border:2px solid var(--ink);border-radius:999px;padding:6px 12px;font-family:var(--display);font-weight:700;font-size:18px}
+.home-stage .owl{width:140px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.act,.mode{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:18px 14px;box-shadow:var(--shadow);font-family:var(--body);min-width:0}
+.act:active,.mode:active{transform:translateY(3px)}
+.act[disabled]{opacity:.5}
+.act-spell{background:#EAF1FF}.act-count{background:#FFF3D1}
+.act-art{display:flex;gap:6px}
+.act-art i{font-style:normal;font-weight:700;font-size:30px;width:44px;height:48px;display:grid;place-items:center;background:var(--wood);border:2px solid var(--wood-dk);border-radius:10px;box-shadow:0 3px 0 var(--wood-dk)}
+.act-art b{font-size:24px;width:42px;height:52px;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);border-radius:50% 50% 46% 46%/58% 58% 42% 42%}
+.act-name{font-family:var(--display);font-weight:700;font-size:24px}
+.act-sub{color:var(--soft);font-size:16px;line-height:1.3}
+.act .btn{pointer-events:none;margin-top:4px}
+.goal{display:flex;gap:10px;justify-content:center;font-size:40px}
+.goalegg{filter:grayscale(.2);opacity:.75}.goalegg.done{opacity:1;animation:pop .4s ease}
+.praise{align-items:center;text-align:center;font-size:20px;background:#F1FBF5;max-width:520px}
+.badgewin{flex-direction:row;align-items:center;gap:16px;background:#FFF6D6}
+.medal{width:64px;height:64px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:32px;background:#E6EBF5;border:3px dashed var(--soft);font-family:var(--display);color:var(--soft)}
+.medal.got{background:var(--sun);border:3px solid var(--ink);color:var(--ink);box-shadow:var(--shadow)}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.badge{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:12px 8px;border-radius:16px;border:2px dashed var(--rule);background:rgba(255,255,255,.7)}
+.badge.got{border:2px solid var(--ink);background:var(--card)}
+.badge small{color:var(--soft);font-size:13px;line-height:1.3}
+/* Counting */
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mode.sel{background:#FFF3D1;outline:4px solid var(--sun);outline-offset:2px}
+.mode-art{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:.06em}
+.chipbtn{font-family:var(--display);font-weight:700;font-size:24px;min-width:84px;padding:10px 18px;border-radius:999px;background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow)}
+.chipbtn.sel{background:var(--sun)}
+.cprog{display:block;width:100%;max-width:260px;height:16px;border:2px solid var(--ink);border-radius:999px;background:var(--card);overflow:hidden}
+.cprog i{display:block;height:100%;width:0;background:var(--leaf);transition:width .3s}
+.eggs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:12px 10px;padding:4px}
+.eggs.small{grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;width:100%;max-width:560px}
+.eggs.small .egg{height:54px;font-size:16px}
+.egg{position:relative;height:80px;display:grid;place-items:center;background:#fff;border:3px solid var(--rule);border-radius:50% 50% 46% 46%/58% 58% 42% 42%;font-family:var(--display);font-weight:700;font-size:26px;color:var(--soft);font-variant-numeric:tabular-nums}
+.egg>span{display:flex;flex-direction:column;align-items:center;line-height:1}
+.egg.given{border-color:var(--ink);color:var(--ink);background:#FFFBEF}
+.egg.chicky{border-color:var(--blue);color:var(--blue);background:#EAF1FF}
+.egg.done{border-color:var(--leaf);color:var(--ink);background:#E3F8EC}
+.egg.now{border-color:var(--sun);background:#FFF6D6;color:var(--ink);box-shadow:0 0 0 5px rgba(255,200,61,.45);animation:pulse 1.2s infinite}
+.egg .chick{font-size:22px;margin-bottom:2px}
+.egg .ghost{opacity:.4;color:var(--blue)}
+.egg .hop{position:absolute;top:-12px;left:-10px;font-style:normal;font-size:13px;background:var(--blue);color:#fff;border-radius:999px;padding:2px 7px}
+.egg.hatch{animation:hatch .6s ease}
+@keyframes hatch{0%{transform:rotate(0)}25%{transform:rotate(-10deg) scale(1.1)}50%{transform:rotate(10deg) scale(1.1)}100%{transform:rotate(0)}}
+.choices{display:flex;flex-direction:column;gap:6px}
+.numbtn{font-family:var(--display);font-weight:700;font-size:32px;min-width:84px;height:72px;border-radius:18px;background:var(--wood);border:2px solid var(--wood-dk);box-shadow:0 4px 0 var(--wood-dk)}
+.numbtn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--wood-dk)}
+@media (max-width:620px){.modes{grid-template-columns:1fr}.mode{flex-direction:row;text-align:left;align-items:center;flex-wrap:wrap}.mode .act-sub{flex-basis:100%}}
+@media (max-width:520px){.acts{grid-template-columns:1fr 1fr;gap:10px}.act{padding:14px 8px}.act-name{font-size:20px}.act-art i{width:34px;height:40px;font-size:24px}.act-art b{width:32px;height:42px;font-size:18px}.home-stage .owl{width:96px}.home-stage h1{font-size:30px}}
+
+/* Levels + level check */
+.levelrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.lvchip{font-family:var(--display);font-weight:600;font-size:15px;background:var(--card);border:2px solid var(--ink);border-radius:999px;padding:5px 12px}
+.gradepick{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gradepick .act-name{font-size:28px}
+.wordopts{display:flex;flex-direction:column;gap:12px;max-width:420px;width:100%;margin:0 auto}
+.wordopt{font-family:var(--body);font-weight:700;font-size:40px;letter-spacing:.06em;padding:12px;border-radius:18px;background:var(--card);border:3px solid var(--ink);box-shadow:var(--shadow)}
+.wordopt:active{transform:translateY(3px)}
+.right{background:#B9F0CF!important;border-color:var(--leaf)!important}
+.wrongpick{background:#FFD9E0!important;border-color:var(--berry)!important}
+.eggs.placement{grid-template-columns:repeat(4,1fr);max-width:420px;margin:0 auto;width:100%}
+.lvrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+.lvrow>span{font-weight:700;min-width:80px;text-align:left}
+.lvrow .chipbtn{font-size:16px;min-width:0;padding:8px 12px}
+.lgroup{display:flex;flex-direction:column;gap:8px}
+.lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.lesson{position:relative;text-align:left;font-family:var(--display);font-weight:600;font-size:17px;padding:12px 14px;border-radius:14px;background:var(--paper);border:2px solid var(--rule)}
+.lesson.sel{background:#FFF3D1;border-color:var(--ink);box-shadow:var(--shadow)}
+.lesson .tick{font-style:normal;color:var(--leaf);margin-left:6px;font-weight:700}
+.lesson .rec{display:block;font-style:normal;font-size:12px;color:#fff;background:var(--blue);border-radius:999px;padding:1px 8px;width:max-content;margin-top:4px}
+.egg.wide{font-size:20px}
+.act-art b.w{width:52px;font-size:17px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -167,48 +242,77 @@ const app=document.getElementById('app');
 const KEY='hootspell.v1';
 const STICKERS=['🦄','🐙','🦖','🚀','🌈','🐳','🦊','🍩','🐝','🦋','🐢','🎈','🐧','🦁','🍉','🐸','🚂','🦜','🍦','🐼','🎸','🌻','👑','🐞'];
 const STARS_PER_STICKER=10;
+const BUILTIN=[
+ {id:'g0',name:'Kinder words',builtin:true,words:[{w:'cat',s:'The cat is asleep.'},{w:'dog',s:'My dog likes to run.'},{w:'sun',s:'The sun is hot.'},{w:'hat',s:'I wear a red hat.'},{w:'red',s:'An apple is red.'},{w:'big',s:'An elephant is big.'},{w:'run',s:'I can run fast.'},{w:'pig',s:'The pig rolls in mud.'},{w:'cup',s:'Milk is in my cup.'},{w:'bed',s:'I sleep in my bed.'},{w:'map',s:'We look at the map.'},{w:'sit',s:'Please sit down.'}]},
+ {id:'g1',name:'Grade 1 words',builtin:true,words:[{w:'ship',s:'The ship sails on the sea.'},{w:'fish',s:'A fish can swim.'},{w:'jump',s:'I can jump high.'},{w:'frog',s:'The frog can hop.'},{w:'stop',s:'Stop at the red light.'},{w:'that',s:'That is my bag.'},{w:'with',s:'Come and play with me.'},{w:'sing',s:'We sing a song.'},{w:'duck',s:'The duck says quack.'},{w:'black',s:'The cat is black.'},{w:'tree',s:'A bird sits in the tree.'},{w:'play',s:'Let\'s play outside.'},{w:'said',s:'Mom said yes.'},{w:'have',s:'I have two hands.'},{w:'like',s:'I like ice cream.'},{w:'they',s:'They are my friends.',c:'starts like "the"'}]},
+ {id:'g2',name:'Grade 2 words',builtin:true,words:[{w:'cake',s:'The cake is yummy.'},{w:'bike',s:'I ride my bike.',c:'🚲'},{w:'home',s:'We go home after school.'},{w:'cute',s:'The puppy is cute.',c:'🐶'},{w:'rain',s:'Rain falls from the clouds.'},{w:'boat',s:'The boat floats on the water.'},{w:'seed',s:'Plant a seed in the soil.',c:'🌱'},{w:'night',s:'The moon shines at night.'},{w:'snow',s:'Snow is cold and white.'},{w:'chair',s:'Sit on the chair.',c:'🪑'},{w:'because',s:'I smile because I am happy.',c:'be + cause'},{w:'friend',s:'You are my best friend.',c:'has "end" at the end'},{w:'people',s:'Many people ride the bus.'},{w:'would',s:'Would you like some milk?',c:'like "could" and "should"'},{w:'again',s:'Let\'s play again!'},{w:'jumped',s:'The cat jumped up.',c:'jump + ed'},{w:'running',s:'The dog is running.',c:'run + n + ing'},{w:'happy',s:'I feel happy today.',c:'😊'},{w:'school',s:'I learn at school.',c:'🏫'},{w:'teacher',s:'My teacher reads a story.',c:'👩‍🏫'}]}];
+const gradeName=g=>['Kinder','Grade 1','Grade 2'][g]??'Grade 1';
 const SAMPLE={id:'sample',name:'Sample words',sample:true,words:[
  {w:'cat',s:'The cat is asleep.'},{w:'dog',s:'My dog likes to run.'},{w:'sun',s:'The sun is hot.'},
  {w:'fish',s:'A fish can swim.'},{w:'frog',s:'The frog can hop.'},{w:'jump',s:'I can jump high.'},
  {w:'blue',s:'The sky is blue.'},{w:'tree',s:'A bird sits in the tree.'}]};
-function defaults(){return{kid:'Buddy',rate:0.8,lists:[JSON.parse(JSON.stringify(SAMPLE))],active:'sample',stars:0,stickers:[],stats:{},roundSize:8,scramble:true,startLevel:0,simpleKeys:true}}
+function defaults(){return{kid:'Buddy',rate:0.8,voice:'chicky',placed:false,grade:{spell:null,count:null},spellHist:[],lists:JSON.parse(JSON.stringify(BUILTIN)),active:'g1',stars:0,stickers:[],stats:{},roundSize:8,scramble:true,startLevel:0,simpleKeys:true,days:{date:'',streak:0,today:0,best:0},count:{runs:0,best:0,perfect:0,mode:'together',lesson:null,done:{}},badges:[]}}
 let S=null;
 try{S=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
 S=Object.assign(defaults(),S||{});
+// bring older saved data up to date
+S.count=Object.assign({runs:0,best:0,perfect:0,mode:'together',lesson:null,done:{}},S.count||{});S.count.done=S.count.done||{};
+S.grade=Object.assign({spell:null,count:null},S.grade||{});
+S.lists=S.lists.filter(l=>!(l.id==='sample'&&l.sample));
+for(const b of BUILTIN)if(!S.lists.find(l=>l.id===b.id))S.lists.push(JSON.parse(JSON.stringify(b)));
+if(!S.lists.find(l=>l.id===S.active))S.active='g'+(S.grade.spell??1);
+function setSpellGrade(g){S.grade.spell=g;const L=S.lists.find(l=>l.id===S.active);if(!L||L.builtin)S.active='g'+g;S.startLevel=g;S.simpleKeys=g<2}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const activeList=()=>S.lists.find(l=>l.id===S.active)||S.lists[0];
 const star=(c='star')=>`<svg class="${c}"><use href="#i-star"/></svg>`;
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 
-/* ---------- Owl mascot (original) ---------- */
-function owl(cls=''){return `<svg class="owl ${cls}" viewBox="0 0 160 172" role="img" aria-label="Chicky the rooster">
- <path d="M118 78 q22 -40 36 -18 q-10 4 -12 14 q18 -4 14 16 q-12 -4 -20 6 q10 8 2 18 q-10 -10 -22 -8 z" fill="#FFFFFF" stroke="#25304A" stroke-width="4" stroke-linejoin="round"/>
- <path d="M126 70 q14 -18 22 -10 M128 88 q14 -6 20 2" stroke="#C9D3E6" stroke-width="3" fill="none" stroke-linecap="round"/>
- <path d="M56 46 q-8 -24 10 -22 q0 -16 16 -12 q10 -14 20 4 q14 0 6 24 z" fill="#E2486A" stroke="#25304A" stroke-width="4" stroke-linejoin="round"/>
- <ellipse cx="80" cy="100" rx="58" ry="64" fill="#FFFFFF" stroke="#25304A" stroke-width="4"/>
- <ellipse cx="80" cy="124" rx="36" ry="34" fill="#EEF2F9"/>
- <path d="M26 100 q-10 26 16 38 q-4 -20 8 -32 z" fill="#EEF2F9" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
- <path d="M134 100 q10 26 -16 38 q4 -20 -8 -32 z" fill="#EEF2F9" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
- <circle cx="48" cy="86" r="8" fill="#FFC2CE"/><circle cx="112" cy="86" r="8" fill="#FFC2CE"/>
- <circle cx="60" cy="70" r="10" fill="#25304A"/><circle cx="100" cy="70" r="10" fill="#25304A"/>
- <circle cx="63" cy="66" r="3.5" fill="#fff"/><circle cx="103" cy="66" r="3.5" fill="#fff"/>
- <g class="lid"><circle cx="60" cy="70" r="12" fill="#FFFFFF"/><circle cx="100" cy="70" r="12" fill="#FFFFFF"/><path d="M49 72 q11 6 22 0 M89 72 q11 6 22 0" stroke="#25304A" stroke-width="3" fill="none" stroke-linecap="round"/></g>
- <path d="M68 80 L92 80 L80 96 Z" fill="#FFB020" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
- <path d="M75 95 q-5 16 5 18 q10 -2 5 -18 z" fill="#E2486A" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
- <path d="M64 160 v8 m0 0 l-7 4 m7 -4 l7 4 M96 160 v8 m0 0 l-7 4 m7 -4 l7 4" stroke="#F08A24" stroke-width="5" stroke-linecap="round"/>
+/* ---------- Chicky, the school helper chicken (original) ---------- */
+function owl(cls=''){return `<svg class="owl ${cls}" viewBox="0 0 160 176" role="img" aria-label="Chicky the school helper chicken">
+ <path d="M118 84 q22 -36 36 -16 q-10 4 -12 14 q18 -4 14 16 q-12 -4 -20 6 z" fill="#FFFFFF" stroke="#25304A" stroke-width="4" stroke-linejoin="round"/>
+ <ellipse cx="80" cy="104" rx="58" ry="64" fill="#FFFFFF" stroke="#25304A" stroke-width="4"/>
+ <ellipse cx="80" cy="128" rx="36" ry="34" fill="#EEF2F9"/>
+ <path d="M26 104 q-10 26 16 38 q-4 -20 8 -32 z" fill="#EEF2F9" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <path d="M134 104 q10 26 -16 38 q4 -20 -8 -32 z" fill="#EEF2F9" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <g transform="rotate(-38 132 116)"><rect x="116" y="111" width="34" height="10" rx="2" fill="#FFC83D" stroke="#25304A" stroke-width="3"/><path d="M150 111 L161 116 L150 121 Z" fill="#F6DDB0" stroke="#25304A" stroke-width="3" stroke-linejoin="round"/><rect x="109" y="111" width="8" height="10" rx="2" fill="#F49AB0" stroke="#25304A" stroke-width="3"/></g>
+ <circle cx="46" cy="92" r="8" fill="#FFC2CE"/><circle cx="114" cy="92" r="8" fill="#FFC2CE"/>
+ <circle cx="60" cy="74" r="9" fill="#25304A"/><circle cx="100" cy="74" r="9" fill="#25304A"/>
+ <circle cx="63" cy="70" r="3.2" fill="#fff"/><circle cx="103" cy="70" r="3.2" fill="#fff"/>
+ <g class="lid"><circle cx="60" cy="74" r="12" fill="#FFFFFF"/><circle cx="100" cy="74" r="12" fill="#FFFFFF"/><path d="M50 76 q10 6 20 0 M90 76 q10 6 20 0" stroke="#25304A" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+ <circle cx="60" cy="74" r="16" fill="none" stroke="#2F6FDE" stroke-width="4"/><circle cx="100" cy="74" r="16" fill="none" stroke="#2F6FDE" stroke-width="4"/><path d="M76 72 q4 -4 8 0" stroke="#2F6FDE" stroke-width="4" fill="none"/>
+ <path d="M68 86 L92 86 L80 102 Z" fill="#FFB020" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <path d="M75 101 q-5 16 5 18 q10 -2 5 -18 z" fill="#E2486A" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <path d="M70 46 q-6 -14 6 -14 q4 -10 12 -2 q10 -2 6 12 z" fill="#E2486A" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <path d="M52 40 v10 q28 12 56 0 v-10 z" fill="#2B3A86" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <path d="M34 34 L80 16 L126 34 L80 52 Z" fill="#3A4DB0" stroke="#25304A" stroke-width="3.5" stroke-linejoin="round"/>
+ <path d="M80 34 L118 42 L118 58" stroke="#FFC83D" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="118" cy="61" r="5" fill="#FFC83D" stroke="#25304A" stroke-width="2.5"/><circle cx="80" cy="34" r="3.5" fill="#FFC83D"/>
+ <path d="M64 166 v6 m0 0 l-7 3 m7 -3 l7 3 M96 166 v6 m0 0 l-7 3 m7 -3 l7 3" stroke="#F08A24" stroke-width="5" stroke-linecap="round"/>
 </svg>`}
 
 /* ---------- Sound + speech ---------- */
 let ac=null;
 function tone(freqs,dur=0.12,type='sine',vol=0.22){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const t=ac.currentTime;freqs.forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;const st=t+i*dur;g.gain.setValueAtTime(0.0001,st);g.gain.exponentialRampToValueAtTime(vol,st+0.02);g.gain.exponentialRampToValueAtTime(0.0001,st+dur*1.7);o.connect(g).connect(ac.destination);o.start(st);o.stop(st+dur*1.9)})}catch(e){}}
-const sfx={win:()=>tone([523,659,784,1047],0.11),miss:()=>tone([330,262],0.16,'triangle'),tap:()=>tone([700],0.04,'sine',0.12),sticker:()=>tone([784,988,1175,1568,1175,1568],0.09)};
+// Chicky's chicken sounds, made with the Web Audio API
+function cluck(n=2,gap=0.15){if(S.voice!=='chicky')return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const t0=ac.currentTime;for(let i=0;i<n;i++){const t=t0+i*gap,o=ac.createOscillator(),f=ac.createBiquadFilter(),g=ac.createGain();o.type='sawtooth';o.frequency.setValueAtTime(900+Math.random()*160,t);o.frequency.exponentialRampToValueAtTime(380,t+0.09);f.type='bandpass';f.frequency.value=1250;f.Q.value=2.2;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.4,t+0.012);g.gain.exponentialRampToValueAtTime(0.0001,t+0.11);o.connect(f).connect(g).connect(ac.destination);o.start(t);o.stop(t+0.13)}}catch(e){}}
+function bawk(){if(S.voice!=='chicky')return;cluck(2,0.13);try{const t=ac.currentTime+0.3,o=ac.createOscillator(),l=ac.createOscillator(),lg=ac.createGain(),f=ac.createBiquadFilter(),g=ac.createGain();o.type='sawtooth';o.frequency.setValueAtTime(620,t);o.frequency.exponentialRampToValueAtTime(1150,t+0.1);o.frequency.exponentialRampToValueAtTime(760,t+0.38);l.frequency.value=28;lg.gain.value=40;l.connect(lg).connect(o.frequency);f.type='bandpass';f.frequency.value=1400;f.Q.value=1.6;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.45,t+0.03);g.gain.setValueAtTime(0.4,t+0.28);g.gain.exponentialRampToValueAtTime(0.0001,t+0.42);o.connect(f).connect(g).connect(ac.destination);o.start(t);l.start(t);o.stop(t+0.45);l.stop(t+0.45)}catch(e){}}
+const sfx={win:()=>{tone([523,659,784,1047],0.11);setTimeout(bawk,350)},miss:()=>tone([330,262],0.16,'triangle'),tap:()=>tone([700],0.04,'sine',0.12),sticker:()=>tone([784,988,1175,1568,1175,1568],0.09)};
 let voice=null;
 function pickVoice(){try{const vs=speechSynthesis.getVoices();voice=vs.find(v=>/^en[-_](US|GB|AU|PH)/i.test(v.lang)&&/samantha|google us|female|zira|aria|jenny/i.test(v.name))||vs.find(v=>/^en[-_]US/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null}catch(e){}}
 if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
 const AB=window.AndroidBridge||null;
-function hush(){try{AB?AB.stopSpeaking():('speechSynthesis' in window)&&speechSynthesis.cancel()}catch(e){}}
-function speak(text,rate){if(AB){try{AB.speak(String(text),rate||S.rate)}catch(e){}return}if(!('speechSynthesis' in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);if(voice)u.voice=voice;u.lang=voice?voice.lang:'en-US';u.rate=rate||S.rate;u.pitch=1.1;speechSynthesis.speak(u)}catch(e){}}
+let spTok=0,spCb=null,spTimer=0;
+function spokeDone(tok){if(tok!=null&&String(tok)!==String(spTok))return;clearTimeout(spTimer);const f=spCb;spCb=null;f&&f()}
+function hush(){spCb=null;clearTimeout(spTimer);try{AB?AB.stopSpeaking():('speechSynthesis' in window)&&speechSynthesis.cancel()}catch(e){}}
+// speak(text, rate, onDone): onDone runs when Chicky finishes talking (with a safety timeout)
+function speak(text,rate,onDone){
+  text=String(text);const r=rate||S.rate,tok=++spTok;clearTimeout(spTimer);spCb=onDone||null;
+  if(onDone)spTimer=setTimeout(()=>spokeDone(tok),900+text.length*90/r);
+  const chick=S.voice==='chicky',pitch=chick?1.75:1.1,rr=chick?r*1.05:r;
+  if(AB){try{AB.setPitch&&AB.setPitch(chick?1.8:1.15);AB.speak(text,rr,String(tok))}catch(e){spokeDone(tok)}return}
+  if(!('speechSynthesis' in window)){if(onDone)setTimeout(()=>spokeDone(tok),300);return}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);if(voice)u.voice=voice;u.lang=voice?voice.lang:'en-US';u.rate=rr;u.pitch=pitch;u.onend=()=>spokeDone(tok);speechSynthesis.speak(u)}catch(e){spokeDone(tok)}
+}
 const spellOut=w=>w.toUpperCase().split('').join('. ')+'.';
 
 /* ---------- Voice: letter-name parser ---------- */
@@ -239,26 +343,98 @@ function loop(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.vy+=0.4
 
 function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
 
+/* ---------- Practice streak, daily goal, badges ---------- */
+const GOAL=2;
+const dstr=ms=>{const x=new Date(ms);return x.getFullYear()+'-'+(x.getMonth()+1)+'-'+x.getDate()};
+function streakNow(){const D=S.days,t=dstr(Date.now()),y=dstr(Date.now()-864e5);return(D.date===t||D.date===y)?D.streak:0}
+function todayCount(){return S.days.date===dstr(Date.now())?S.days.today:0}
+function markPractice(){const D=S.days,t=dstr(Date.now()),y=dstr(Date.now()-864e5);if(D.date!==t){D.streak=(D.date===y)?D.streak+1:1;D.date=t;D.today=0}D.today++;D.best=Math.max(D.best||0,D.streak)}
+const okWords=()=>Object.values(S.stats).reduce((a,s)=>a+(s.ok||0),0);
+const BADGES=[
+ {id:'w1',icon:'✏️',name:'First word',desc:'Spell your first word'},
+ {id:'w10',icon:'📝',name:'Word collector',desc:'Spell 10 words right'},
+ {id:'w25',icon:'📚',name:'Bookworm',desc:'Spell 25 words right'},
+ {id:'m5',icon:'🧠',name:'Memory master',desc:'Get 5 words to "Spell it"'},
+ {id:'c20',icon:'🥚',name:'First count',desc:'Finish a skip counting lesson'},
+ {id:'c50',icon:'🐣',name:'Count to 50',desc:'Skip count to 50'},
+ {id:'c100',icon:'🐔',name:'Count to 100',desc:'Skip count to 100'},
+ {id:'c1000',icon:'🚀',name:'Count to 1,000',desc:'Count by 100s to 1,000'},
+ {id:'back',icon:'🔙',name:'Backwards!',desc:'Count backwards'},
+ {id:'g2',icon:'🎓',name:'Grade 2 star',desc:'Reach a Grade 2 level'},
+ {id:'cp',icon:'🎯',name:'Perfect count',desc:'Count with no mistakes'},
+ {id:'s3',icon:'🔥',name:'3 days in a row',desc:'Practise 3 days in a row'},
+ {id:'s7',icon:'🌟',name:'7 days in a row',desc:'Practise 7 days in a row'},
+ {id:'st50',icon:'⭐',name:'50 stars',desc:'Collect 50 stars'},
+ {id:'st100',icon:'🏆',name:'100 stars',desc:'Collect 100 stars'}];
+const BTEST={w1:()=>okWords()>=1,w10:()=>okWords()>=10,w25:()=>okWords()>=25,m5:()=>Object.values(S.stats).filter(s=>(s.lvl??0)>=2&&s.ok).length>=5,
+ c20:()=>S.count.runs>=1,c50:()=>S.count.best>=50,c100:()=>S.count.best>=100,c1000:()=>!!S.count.done['100s'],back:()=>['2back','5back','10back'].some(k=>S.count.done[k]),g2:()=>S.grade.spell===2||S.grade.count===2,cp:()=>S.count.perfect>=1,
+ s3:()=>(S.days.best||0)>=3,s7:()=>(S.days.best||0)>=7,st50:()=>S.stars>=50,st100:()=>S.stars>=100};
+function newBadges(){const n=[];for(const b of BADGES)if(!S.badges.includes(b.id)&&BTEST[b.id]()){S.badges.push(b.id);n.push(b)}return n}
+function goalEggs(){const t=todayCount();return Array.from({length:GOAL},(_,i)=>`<span class="goalegg ${i<t?'done':''}">${i<t?'🐥':'🥚'}</span>`).join('')}
+function homeMessage(){
+  const t=todayCount(),st=streakNow(),toSticker=STARS_PER_STICKER-(S.stars%STARS_PER_STICKER);
+  if(t>=GOAL)return`You finished today's practice! I'm so proud of you. Want to play one more?`;
+  if(t===1)return`Great start today! One more practice and you reach today's goal.`;
+  if(st>=2)return`You practised ${st} days in a row! Let's keep it going today.`;
+  if(toSticker<=4&&S.stars>0)return`Only ${toSticker} more star${toSticker===1?'':'s'} until a new sticker!`;
+  return pick(['Ready to grow your brain? Let\'s learn something together!','A little practice every day makes you super smart!','School time with Chicky! What shall we practise?']);
+}
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+
 /* ---------- HOME ---------- */
 function home(){
-  stopListen();
-  const L=activeList(),n=L?L.words.length:0;
-  const got=S.stickers.length,next=STARS_PER_STICKER-(S.stars%STARS_PER_STICKER);
+  stopListen();VH=null;C=null;
+  const L=activeList(),n=L?L.words.length:0,st=streakNow();
+  const next=STARS_PER_STICKER-(S.stars%STARS_PER_STICKER);
+  const msg=homeMessage();
   app.innerHTML=`<section class="screen">
-   <div class="row spread"><span class="starpill">${star()} ${S.stars}</span><button class="btn ghost" id="toParent">Grown-ups</button></div>
-   <div class="hero">${owl()}<div class="screen" style="gap:10px"><h1>Hi, ${esc(S.kid)}!</h1><p style="font-size:22px">I'm Chicky! Let's practise your spelling words.</p></div></div>
-   <div class="card"><div class="row spread"><div><h3>Today's words${L&&L.sample?'<span class="sample-tag">example list</span>':''}</h3><p class="muted">${L?esc(L.name):'No list yet'} · ${n} word${n===1?'':'s'}</p></div>
-   <button class="btn go big" id="start" ${n?'':'disabled'}>Let's spell!</button></div>
-   ${n?'':'<p>Ask a grown-up to add your spelling words.</p>'}</div>
+   <div class="row spread"><div class="row" style="gap:8px"><span class="starpill">${star()} ${S.stars}</span>${st?`<span class="streakpill" title="Days in a row">🔥 ${st} day${st===1?'':'s'}</span>`:''}</div><button class="btn ghost" id="toParent">Grown-ups</button></div>
+   <div class="stage home-stage">${owl()}<div class="screen" style="gap:10px;min-width:0"><h1>Hi, ${esc(S.kid)}!</h1><div class="bubble">${esc(msg)}</div></div></div>
+   <div class="levelrow"><span class="lvchip">📚 ${gradeName(S.grade.spell??1)} speller</span><span class="lvchip">🔢 ${gradeName(S.grade.count??1)} counter</span><button class="btn small" id="lvcheck">Check my level</button></div>
+   <div class="acts">
+    <button class="act act-spell" id="start" ${n?'':'disabled'}><span class="act-art"><i>a</i><i>b</i><i>c</i></span><span class="act-name">Spelling</span><span class="act-sub">${L?esc(L.name):'No words yet'} · ${n} word${n===1?'':'s'}</span><span class="btn go">Let's spell!</span></button>
+    <button class="act act-count" id="toCount"><span class="act-art">${(()=>{const r=recommendLesson();return makeSeq(r).slice(0,3).map(n=>`<b class="${String(n).length>=3?'w':''}">${n}</b>`).join('')})()}</span><span class="act-name">Skip counting</span><span class="act-sub">Next: ${esc(recommendLesson().name)}</span><span class="btn go">Let's count!</span></button>
+   </div>
+   ${n?'':'<p class="note">Ask a grown-up to add your spelling words.</p>'}
    <div class="homegrid">
-    <button class="card" id="toBook" style="text-align:left;font:inherit"><h3>Sticker book</h3><p class="muted">${got} of ${STICKERS.length} stickers</p><div class="meter" aria-label="Progress to next sticker"><i style="width:${(S.stars%STARS_PER_STICKER)/STARS_PER_STICKER*100}%"></i></div><p class="muted">${next} more star${next===1?'':'s'} for a new sticker</p></button>
-    <div class="card"><h3>How to play</h3><p class="muted">First copy the word, then fill the gaps, then spell it all by yourself. Stuck? Tap Clue and Chicky will help!</p></div>
+    <div class="card"><h3>Today's goal</h3><div class="goal">${goalEggs()}</div><p class="muted">${todayCount()>=GOAL?'Goal done! Super job!':`Do ${GOAL-todayCount()} more practice${GOAL-todayCount()===1?'':'s'} to hatch your eggs.`}</p></div>
+    <button class="card" id="toBook" style="text-align:left;font:inherit"><h3>Stickers & badges</h3><p class="muted">${S.stickers.length} stickers · ${S.badges.length} badges</p><div class="meter" aria-label="Progress to next sticker"><i style="width:${(S.stars%STARS_PER_STICKER)/STARS_PER_STICKER*100}%"></i></div><p class="muted">${next} more star${next===1?'':'s'} for a new sticker</p></button>
    </div></section>`;
-  $('#start')&&($('#start').onclick=()=>{sfx.tap();startRound()});
+  $('#start').onclick=()=>{sfx.tap();startRound()};
+  $('#toCount').onclick=()=>{sfx.tap();countMenu()};
+  $('#lvcheck').onclick=()=>{sfx.tap();placementIntro()};
   $('#toBook').onclick=book; $('#toParent').onclick=gate;
 }
 const $=s=>app.querySelector(s);
 
+/* ---------- CELEBRATE (shared praise screen) ---------- */
+const EFFORT=['You kept trying, and that is how your brain grows!','Practice makes your brain stronger every day!','Mistakes help us learn. You learned so much today!','Wow, you worked so hard. I\'m proud of you!','Every time you practise, you get smarter!'];
+function celebrate(o){
+  stopListen();
+  const before=Math.floor(o.startStars/STARS_PER_STICKER),after=Math.floor(S.stars/STARS_PER_STICKER);
+  const fresh=[];
+  for(let k=before;k<after&&S.stickers.length<STICKERS.length;k++){const left=STICKERS.filter(s=>!S.stickers.includes(s));const s=left[Math.floor(Math.random()*left.length)];S.stickers.push(s);fresh.push(s)}
+  markPractice();
+  const badges=newBadges();save();
+  const t=todayCount(),goalJustMet=t===GOAL,st=streakNow();
+  const effort=pick(EFFORT);
+  const goalLine=t>=GOAL?(goalJustMet?`You reached today's goal! ${st>1?`That's ${st} days in a row!`:'Come back tomorrow to start a streak!'}`:'You did extra practice today. Superstar!'):`One more practice to reach today's goal!`;
+  app.innerHTML=`<section class="screen" style="text-align:center;align-items:center">
+   ${owl('cheer')}<h1>${esc(o.title)}</h1>
+   <p style="font-size:22px">${esc(o.line)}</p>
+   <div class="bigstars" aria-label="${o.stars} stars">${Array.from({length:Math.min(o.stars,24)},()=>'<svg viewBox="0 0 24 24"><use href="#i-star"/></svg>').join('')}</div>
+   ${o.extra||''}
+   ${fresh.length?`<div class="card" style="align-items:center"><h2>New sticker!</h2><div class="newsticker">${fresh.join(' ')}</div></div>`:''}
+   ${badges.map(b=>`<div class="card badgewin"><span class="medal got">${b.icon}</span><div style="text-align:left"><h2>New badge!</h2><p><b>${esc(b.name)}</b> · ${esc(b.desc)}</p></div></div>`).join('')}
+   <div class="card praise"><p>${esc(effort)}</p><p class="muted">${esc(o.nudge)}</p><div class="goal">${goalEggs()}</div><p class="muted">${esc(goalLine)}</p></div>
+   <div class="actions"><button class="btn go big" id="again">${esc(o.againLabel||'Play again')}</button>${o.other?`<button class="btn blue" id="other">${esc(o.other.label)}</button>`:''}<button class="btn" id="hm">Home</button></div>
+  </section>`;
+  sfx[fresh.length||badges.length?'sticker':'win']();confetti(170);
+  const say=[`Bok bok! ${o.title}`,o.line,fresh.length?'You got a new sticker!':'',badges.length?`You earned the ${badges[0].name} badge!`:'',effort,goalJustMet?'You reached today\'s goal!':o.nudge].filter(Boolean).join(' ');
+  speak(say);
+  $('#again').onclick=()=>{hush();o.again()};$('#hm').onclick=()=>{hush();home()};
+  $('#other')&&($('#other').onclick=()=>{hush();o.other.fn()});
+}
 /* ---------- ROUND ---------- */
 let R=null;
 // Picture clues for common early words (parents can add their own clue too)
@@ -269,6 +445,7 @@ function wordKey(w){return w.w.toLowerCase()}
 function stat(w){const k=wordKey(w);return S.stats[k]||(S.stats[k]={seen:0,first:0,ok:0,miss:0,last:0,lvl:S.startLevel})}
 function score(w){const s=S.stats[wordKey(w)];if(!s)return 5+Math.random();return (s.miss*2-s.first)+(2-(s.lvl??0))+Math.random()*2}
 function startRound(){
+  VH=null;C=null;stopListen();
   const L=activeList();if(!L||!L.words.length)return home();
   const pick=L.words.slice().sort((a,b)=>score(b)-score(a)).slice(0,Math.max(1,S.roundSize));
   R={words:shuffle(pick),i:0,results:[],stars:0,startStars:S.stars};
@@ -398,7 +575,7 @@ function drawActions(){
 }
 function setBubble(t){const b=$('#bubble');if(b)b.textContent=t}
 function owlMood(m){const o=$('#owlbox svg');if(!o)return;o.classList.remove('cheer','sad');void o.offsetWidth;o.classList.add(m)}
-const PRAISE=['Cock-a-doodle-doo!','Hooray!','Super speller!','You did it!','Amazing!','Wow, great job!','High five!','Brilliant!'];
+const PRAISE=['Bok bok, brilliant!','Hooray!','Super speller!','You did it!','Amazing!','Wow, great job!','High five!','Brilliant!'];
 function win(){
   const c=R.cur,s=stat(c.W);
   const clean=c.tries===0&&!c.revealed&&c.clues<2&&(c.totalWrong||0)<2;
@@ -407,7 +584,7 @@ function win(){
   s.seen++;s.ok++;if(clean)s.first++;s.last=Date.now();
   let up='';
   if(clean&&c.mode==='spell'&&(s.lvl??0)<2){s.lvl=(s.lvl??0)+1;up=s.lvl===1?' Next time, fill the gaps!':' Next time, spell it all by yourself!'}
-  R.results.push({w:c.W.w,ok:true});save();
+  R.results.push({w:c.W.w,ok:true,clean});save();
   sfx.win();confetti(clean?110:60);owlMood('cheer');
   const p=PRAISE[Math.floor(Math.random()*PRAISE.length)];
   setBubble(`${p} +${earned} star${earned>1?'s':''}.${up}`);
@@ -441,12 +618,14 @@ function check(){
 }
 
 /* ---------- Voice input ---------- */
+let VH=null; // voice handler for the current activity (counting); null = spelling
 function toggleListen(){listening?stopListen():startListen()}
-function micOff(msg){micOK=false;const m=$('#mic');if(m){m.remove();$('#miclabel').textContent='';$('#heard').textContent=msg||'Voice is not available here. Tap the letter blocks instead.'}}
-function lsStart(){listening=true;const m=$('#mic');m&&m.classList.add('on');const l=$('#miclabel');l&&(l.textContent="I'm listening… say each letter")}
-function lsEnd(){listening=false;const m=$('#mic');m&&m.classList.remove('on');const l=$('#miclabel');l&&micOK&&(l.textContent='Tap me and say the letters')}
-function lsErr(code){if(code==='not-allowed'||code==='service-not-allowed'||code==='audio-capture')micOff('The microphone is blocked. Tap the letter blocks instead.');else if(code==='no-speech')setBubble("I didn't hear anything. Tap the red button and say the letters loudly!");else if(code==='unavailable')micOff()}
+function micOff(msg){micOK=false;const m=$('#mic');if(m){m.remove();const l=$('#miclabel');l&&(l.textContent='');const h=$('#heard');h&&(h.textContent=msg||'Voice is not available here. Tap instead.')}if(C){C.auto=false;drawChoices()}}
+function lsStart(){listening=true;const m=$('#mic');m&&m.classList.add('on');const l=$('#miclabel');l&&(l.textContent=VH?VH.listening:"I'm listening… say each letter")}
+function lsEnd(){listening=false;const m=$('#mic');m&&m.classList.remove('on');const l=$('#miclabel');l&&micOK&&(l.textContent=VH?VH.idle:'Tap me and say the letters')}
+function lsErr(code){if(code==='not-allowed'||code==='service-not-allowed'||code==='audio-capture')micOff('The microphone is blocked. Tap instead.');else if(code==='no-speech'){if(VH)VH.noSpeech();else setBubble("I didn't hear anything. Tap the red button and say the letters loudly!")}else if(code==='unavailable')micOff()}
 function lsResult(alts,isFinal){
+  if(VH){if(alts&&alts.length)VH.result(alts,isFinal);return}
   const c=R&&R.cur;if(!c||c.solved||!alts||!alts.length)return;
   const h=$('#heard');h&&(h.textContent=`I heard: "${String(alts[0]).trim()}"`);
   if(!isFinal)return;
@@ -465,7 +644,7 @@ function lsResult(alts,isFinal){
   }
 }
 // Callbacks used by the Android app
-window.__chicky={start:lsStart,end:lsEnd,error:lsErr,result:lsResult};
+window.__chicky={start:lsStart,end:lsEnd,error:lsErr,result:lsResult,spoke:id=>spokeDone(id)};
 function startListen(){
   hush();
   if(AB){try{AB.startListening()}catch(e){micOff()}return}
@@ -485,24 +664,359 @@ function startListen(){
 }
 function stopListen(){if(AB){try{AB.stopListening()}catch(e){}}if(rec){try{rec.abort()}catch(e){}}listening=false}
 
-/* ---------- DONE ---------- */
+/* ---------- DONE (spelling) ---------- */
 function done(){
-  const before=Math.floor(R.startStars/STARS_PER_STICKER),after=Math.floor(S.stars/STARS_PER_STICKER);
-  const fresh=[];
-  for(let k=before;k<after&&S.stickers.length<STICKERS.length;k++){const left=STICKERS.filter(s=>!S.stickers.includes(s));const s=left[Math.floor(Math.random()*left.length)];S.stickers.push(s);fresh.push(s)}
-  save();
-  const right=R.results.filter(r=>r.ok).length;
-  app.innerHTML=`<section class="screen" style="text-align:center;align-items:center">
-   ${owl('cheer')}<h1>Great work, ${esc(S.kid)}!</h1>
-   <p style="font-size:22px">You spelled ${right} of ${R.results.length} words and earned ${R.stars} star${R.stars===1?'':'s'}.</p>
-   <div class="bigstars">${Array.from({length:Math.min(R.stars,24)},()=>'<svg viewBox="0 0 24 24"><use href="#i-star"/></svg>').join('')}</div>
-   ${fresh.length?`<div class="card" style="align-items:center"><h2>New sticker!</h2><div class="newsticker">${fresh.join(' ')}</div></div>`:''}
-   <div class="wordchips" style="justify-content:center">${R.results.map(r=>`<span class="chip ${r.ok?'ok':'miss'}">${esc(r.w)}</span>`).join('')}</div>
-   <div class="actions"><button class="btn go big" id="again">Play again</button><button class="btn" id="bk">Sticker book</button><button class="btn" id="hm">Home</button></div>
+  const right=R.results.filter(r=>r.ok).length,n=R.results.length,miss=n-right;
+  // Chicky keeps guessing the level: two great rounds = move up, two hard rounds = easier words
+  let lvlMsg='';const L=activeList();
+  if(L&&L.builtin&&n){
+    const acc=R.results.filter(r=>r.clean).length/n,g=S.grade.spell??1;S.spellHist=(S.spellHist||[]).concat([acc]).slice(-3);const h=S.spellHist.slice(-2);
+    if(h.length===2&&h.every(a=>a>=0.85)&&g<2){setSpellGrade(g+1);S.spellHist=[];lvlMsg=`Wow! You're ready for ${gradeName(g+1)} words! Chicky moved you up.`}
+    else if(h.length===2&&h.every(a=>a<0.4)&&g>0){setSpellGrade(g-1);S.spellHist=[];lvlMsg='Chicky picked some warm-up words for next time. You\'ll be back up in no time!'}
+  }
+  celebrate({startStars:R.startStars,stars:R.stars,title:right===n?`Super speller, ${S.kid}!`:`Great work, ${S.kid}!`,
+    line:`You spelled ${right} of ${n} words and earned ${R.stars} star${R.stars===1?'':'s'}.`,
+    extra:`<div class="wordchips" style="justify-content:center">${R.results.map(r=>`<span class="chip ${r.ok?'ok':'miss'}">${esc(r.w)}</span>`).join('')}</div>`,
+    nudge:lvlMsg||(miss?`Let's practise ${miss===1?'that tricky word':'those tricky words'} again soon. You'll get ${miss===1?'it':'them'}!`:'Every word right! Your brain is growing so fast!'),
+    again:startRound,other:{label:'Skip counting',fn:countMenu}});
+}
+
+/* ---------- SKIP COUNTING ---------- */
+let C=null;
+const NUMW={zero:0,oh:0,one:1,won:1,two:2,to:2,too:2,tu:2,three:3,tree:3,free:3,four:4,for:4,fore:4,five:5,six:6,sicks:6,sex:6,seven:7,eight:8,ate:8,nine:9,ten:10,tin:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19};
+const TENS={twenty:20,twenny:20,thirty:30,forty:40,fourty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90};
+// "two four six", "246810", "three hundred twenty", "one thousand" -> numbers. `upcoming` helps split digits glued together.
+function parseNums(raw,upcoming){
+  const toks=String(raw).toLowerCase().replace(/(\d),(\d{3})/g,'$1$2').replace(/-/g,' ').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(Boolean);
+  const out=[];let hund=false;
+  const add=(v,i)=>{if(hund&&out.length&&v<100&&toks[i+1]!=='hundred'){out[out.length-1]+=v}else out.push(v);hund=false};
+  for(let i=0;i<toks.length;i++){
+    const t=toks[i];
+    if(/^\d+$/.test(t)){
+      let s=t,k=out.length,parts=[];
+      while(s.length&&upcoming&&k<upcoming.length&&s.startsWith(String(upcoming[k]))){parts.push(upcoming[k]);s=s.slice(String(upcoming[k]).length);k++}
+      if(!s.length&&parts.length)out.push(...parts);else out.push(parseInt(t,10));
+      hund=false;continue;
+    }
+    if(t==='and'&&hund)continue;
+    if(t in TENS){let v=TENS[t];const nx=toks[i+1];if(nx&&nx in NUMW&&NUMW[nx]>0&&NUMW[nx]<10&&toks[i+2]!=='hundred'){v+=NUMW[nx];i++}else if(nx&&/^[1-9]$/.test(nx)){v+=+nx;i++}add(v,i);continue}
+    if(t==='hundred'){if(out.length&&out[out.length-1]>0&&out[out.length-1]<10&&!hund)out[out.length-1]*=100;else out.push(100);hund=true;continue}
+    if(t==='thousand'){if(out.length&&out[out.length-1]>0&&out[out.length-1]<10)out[out.length-1]*=1000;else out.push(1000);hund=false;continue}
+    if(t in NUMW){add(NUMW[t],i);continue}
+    hund=false;
+  }
+  return out;
+}
+const STEPW={2:'twos',5:'fives',10:'tens',100:'hundreds'};
+const LESSONS=[
+ {id:'2s20',g:0,name:'By 2s to 20',step:2,from:2,to:20},
+ {id:'10s100',g:0,name:'By 10s to 100',step:10,from:10,to:100},
+ {id:'5s50',g:1,name:'By 5s to 50',step:5,from:5,to:50},
+ {id:'2s50',g:1,name:'By 2s to 50',step:2,from:2,to:50},
+ {id:'5s100',g:1,name:'By 5s to 100',step:5,from:5,to:100},
+ {id:'2s100',g:1,name:'By 2s to 100',step:2,from:2,to:100},
+ {id:'10any',g:2,name:'By 10s from any number',step:10,rand:'ten'},
+ {id:'5any',g:2,name:'By 5s from any number',step:5,rand:'five'},
+ {id:'odd',g:2,name:'By 2s from an odd number',step:2,rand:'odd'},
+ {id:'100s',g:2,name:'By 100s to 1,000',step:100,from:100,to:1000},
+ {id:'2back',g:2,name:'Backwards by 2s',step:-2,from:30,to:2},
+ {id:'5back',g:2,name:'Backwards by 5s',step:-5,from:100,to:50},
+ {id:'10back',g:2,name:'Backwards by 10s',step:-10,from:100,to:0}];
+const lessonById=id=>LESSONS.find(l=>l.id===id)||LESSONS[0];
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+function makeSeq(L){
+  let from=L.from,to=L.to;
+  if(L.rand==='ten'){from=ri(1,9)+10*ri(1,4);to=from+90}
+  if(L.rand==='five'){from=5*ri(3,12);to=from+50}
+  if(L.rand==='odd'){from=2*ri(5,30)+1;to=from+20}
+  const s=[];for(let n=from;L.step>0?n<=to:n>=to;n+=L.step)s.push(n);return s;
+}
+const isPerfect=id=>!!(S.count.done[id]&&S.count.done[id].perfect);
+function recommendLesson(){
+  const g=S.grade.count??0;
+  const at=gg=>LESSONS.filter(l=>l.g===gg);
+  return at(g).find(l=>!isPerfect(l.id))||LESSONS.find(l=>l.g<g&&!isPerfect(l.id))||at(g+1).find(l=>!isPerfect(l.id))||at(g)[0]||LESSONS[0];
+}
+const MODES={
+  together:{name:'Count with Chicky',desc:'Take turns! Chicky says one number, you say the next.',art:'🐔 ↔ 🧒'},
+  solo:{name:'Count by myself',desc:'Chicky says the first number. You say the rest!',art:'🧒 2 4 6'},
+  missing:{name:'Missing numbers',desc:'Some eggs are empty. Say the missing numbers.',art:'2 _ 6 _'}};
+function countMenu(){
+  stopListen();VH=null;
+  const m=S.count.mode||'together',rec=recommendLesson(),sel=S.count.lesson&&LESSONS.find(l=>l.id===S.count.lesson)?S.count.lesson:rec.id;
+  const g=S.grade.count??0;
+  const group=gg=>`<div class="lgroup"><h3>${gradeName(gg)}${gg===g?' <span class="sample-tag">your level</span>':gg>g?' <span class="sample-tag">challenge</span>':' <span class="sample-tag">review</span>'}</h3><div class="lessons">${LESSONS.filter(l=>l.g===gg).map(l=>`<button class="lesson ${l.id===sel?'sel':''}" data-l="${l.id}" aria-pressed="${l.id===sel}"><span>${esc(l.name)}</span>${isPerfect(l.id)?'<em class="tick">✓</em>':''}${l.id===rec.id?'<em class="rec">Chicky picks</em>':''}</button>`).join('')}</div></div>`;
+  const order=[g,...[0,1,2].filter(x=>x!==g)];
+  app.innerHTML=`<section class="screen">
+   <div class="topbar"><button class="btn small" id="quit">Home</button><h2 style="flex:1;text-align:center">Skip counting</h2><span class="starpill">${star()} ${S.stars}</span></div>
+   <div class="stage">${owl()}<div class="bubble">Skip counting means we jump by the same number every time! Today I think you'll love <b>${esc(rec.name)}</b>.</div></div>
+   <div class="card"><h3>Pick a lesson</h3>${order.map(group).join('')}</div>
+   <div class="modes" role="radiogroup" aria-label="Game">${Object.entries(MODES).map(([k,v])=>`<button class="mode ${k===m?'sel':''}" data-m="${k}" role="radio" aria-checked="${k===m}"><span class="mode-art">${v.art}</span><span class="act-name">${v.name}</span><span class="act-sub">${v.desc}</span></button>`).join('')}</div>
+   ${micOK?'':'<p class="note">Voice is not available here, so you can tap the numbers instead.</p>'}
+   <div class="actions"><button class="btn go big" id="go">Start counting!</button></div>
   </section>`;
-  sfx[fresh.length?'sticker':'win']();confetti(160);
-  speak(fresh.length?`Cock-a-doodle-doo! Great work ${S.kid}! You got a new sticker!`:`Cock-a-doodle-doo! Great work ${S.kid}! You earned ${R.stars} stars!`);
-  $('#again').onclick=startRound;$('#bk').onclick=book;$('#hm').onclick=home;
+  $('#quit').onclick=home;
+  app.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{S.count.mode=b.dataset.m;save();sfx.tap();countMenu()});
+  app.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{S.count.lesson=b.dataset.l;save();sfx.tap();countMenu()});
+  $('#go').onclick=()=>startCount(S.count.mode||'together',sel);
+}
+function startCount(mode,lid){
+  const L=lessonById(lid),seq=makeSeq(L);
+  const who=seq.map((_,i)=>i===0?'chicky':mode==='together'?(i%2===0?'chicky':'kid'):'kid');
+  if(mode==='missing'){who[0]='given';const idx=shuffle(seq.map((_,i)=>i).slice(1));const keep=new Set(idx.slice(0,Math.floor(idx.length*0.55)));seq.forEach((_,i)=>{if(i>0)who[i]=keep.has(i)?'given':'kid'});if(!who.includes('kid'))who[seq.length-1]='kid'}
+  C={mode,L,step:L.step,seq,who,pos:0,state:seq.map(()=>''),mistakes:0,correct:0,run:0,missHere:0,silent:0,auto:micOK,over:false,startStars:S.stars,hint:-1};
+  VH={result:countVoice,noSpeech:countSilent,idle:'Tap me and say the number',listening:'I\'m listening… say the numbers'};
+  renderCount();
+  const by=`by ${STEPW[Math.abs(L.step)]}${L.step<0?', going backwards':''}`;
+  const intro=mode==='together'?`Let's take turns counting ${by}! I'll start. Then it's your turn.`:mode==='solo'?`Let's count ${by}! I'll say the first number, then you keep going.`:`Some eggs are empty. Count ${by} and say the missing numbers!`;
+  setBubble(intro);cluck(2);speak(intro,null,()=>advance());
+}
+function eggHTML(i){
+  const n=C.seq[i],w=C.who[i],st=C.state[i];
+  let cls='egg',inner='?';
+  if(w==='given'){cls+=' given';inner=n}
+  if(st==='chicky'){cls+=' chicky';inner=n}
+  if(st==='done'){cls+=' done';inner=`<span class="chick">🐥</span>${n}`}
+  if(i===C.pos&&!C.over&&w==='kid'&&st===''){cls+=' now';inner=C.hint===i?`<span class="ghost">${n}</span>`:'?'}
+  if(String(n).length>=3)cls+=' wide';
+  const hop=(C.step>0?'+':'−')+Math.abs(C.step);
+  return `<div class="${cls}" data-i="${i}"><span>${inner}</span>${i===C.pos&&w==='kid'&&!C.over?`<em class="hop">${hop}</em>`:''}</div>`;
+}
+function renderCount(){
+  app.innerHTML=`<section class="screen">
+   <div class="topbar"><button class="btn small" id="quit">Home</button><div class="dots" aria-hidden="true"><span class="cprog"><i id="cbar"></i></span></div><span class="starpill">${star()} ${S.stars}</span></div>
+   <div class="stage"><div id="owlbox">${owl()}</div><div class="bubble" id="bubble"></div></div>
+   <div class="row" style="justify-content:center"><span class="lvlpill lv1">${esc(C.L.name)}</span></div>
+   <div class="eggs" id="eggs"></div>
+   ${micOK?`<button class="mic" id="mic" aria-label="Tap and say the number"><svg><use href="#i-mic"/></svg></button><div class="miclabel" id="miclabel">Tap me and say the number</div><div class="heard" id="heard"></div>`:''}
+   <div id="choices" class="choices"></div>
+   <div class="actions"><button class="btn" id="pattern">Hear the pattern</button><button class="btn clue" id="chelp">Help</button></div>
+  </section>`;
+  $('#quit').onclick=()=>{hush();home()};
+  $('#mic')&&($('#mic').onclick=()=>{if(listening){C.auto=false;stopListen()}else{C.auto=true;C.silent=0;startListen()}});
+  $('#pattern').onclick=()=>{stopListen();const upto=C.seq.slice(0,Math.max(C.pos,3));speak(`Count by ${STEPW[Math.abs(C.step)]}: ${upto.join(', ')}.`,0.8,()=>listenSoon())};
+  $('#chelp').onclick=()=>countHelp();
+  drawEggs();
+}
+function drawEggs(){
+  const e=$('#eggs');if(!e)return;e.innerHTML=C.seq.map((_,i)=>eggHTML(i)).join('');
+  const done=C.state.filter(Boolean).length+C.who.filter(w=>w==='given').length;
+  const b=$('#cbar');b&&(b.style.width=(done/C.seq.length*100)+'%');
+  const now=e.querySelector('.now');now&&now.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+  drawChoices();
+}
+function drawChoices(){
+  const box=$('#choices');if(!box)return;
+  if(C.over||C.who[C.pos]!=='kid'){box.innerHTML='';return}
+  const want=C.seq[C.pos],sg=Math.sign(C.step);
+  const wrong=shuffle([...new Set([want+sg,want-sg,want+C.step,want+10*sg].filter(x=>x>=0&&x!==want))]).slice(0,2);
+  box.innerHTML=`<p class="note">${micOK?'Or tap the number:':'Tap the next number:'}</p><div class="row" style="justify-content:center">${shuffle([want,...wrong]).map(n=>`<button class="numbtn" data-n="${n}">${n}</button>`).join('')}</div>`;
+  box.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{stopListen();countInput([+b.dataset.n])});
+}
+function skipGiven(){while(C.pos<C.seq.length&&C.who[C.pos]==='given')C.pos++}
+function listenSoon(){if(C&&!C.over&&C.auto&&micOK&&C.who[C.pos]==='kid')setTimeout(()=>{if(C&&!C.over&&!listening&&C.who[C.pos]==='kid')startListen()},200)}
+function advance(){
+  if(!C||C.over)return;
+  skipGiven();
+  if(C.pos>=C.seq.length)return finishCount();
+  if(C.who[C.pos]==='chicky'){
+    const n=C.seq[C.pos];C.state[C.pos]='chicky';drawEggs();owlMood('cheer');setBubble(`${n}…`);
+    speak(String(n),0.9,()=>{C.pos++;skipGiven();if(C.pos>=C.seq.length)return finishCount();drawEggs();
+      const prev=C.seq[C.pos-1];setBubble(C.mode==='together'?`Your turn! What comes after ${prev}?`:`Keep going! What comes after ${prev}?`);
+      advance()});
+    return;
+  }
+  drawEggs();
+  const prev=C.seq[C.pos-1];
+  if(!$('#bubble').textContent)setBubble(prev!=null?`What comes after ${prev}?`:'What number do we start with?');
+  listenSoon();
+}
+const MIDPRAISE=['Yes!','Great!','You got it!','Super!','Keep going!','Egg-cellent!','Nice jumping!'];
+function countInput(nums){
+  if(!C||C.over||!nums.length)return;
+  let progressed=0;
+  for(const n of nums){
+    skipGiven();
+    if(C.pos>=C.seq.length||C.who[C.pos]!=='kid')break;
+    const want=C.seq[C.pos],at=C.seq.indexOf(n);
+    if(n===want){C.state[C.pos]='done';C.pos++;C.correct++;C.run++;C.missHere=0;C.hint=-1;progressed++;skipGiven();if(C.mode==='together')break;continue}
+    if(at>-1&&at<C.pos)continue; // repeated a number that's already done
+    if(progressed)break;
+    return countMistake(n,want);
+  }
+  if(!progressed)return;
+  tone([660+C.correct*8,880+C.correct*8],0.07,'sine',0.15);
+  owlMood('cheer');drawEggs();
+  if(C.pos>=C.seq.length)return finishCount();
+  const prev=C.seq[C.pos-1];
+  if(C.run>0&&C.run%5===0){
+    const p=pick(['You\'re on a roll!','Wow, you are a counting star!','Amazing! Keep jumping!','You\'re doing so well!']);
+    setBubble(`${p} What comes after ${prev}?`);
+    if(C.who[C.pos]==='kid'){cluck(2);speak(p,null,()=>listenSoon());return}
+  }else if(C.who[C.pos]==='kid'){setBubble(`${pick(MIDPRAISE)} What comes after ${prev}?`)}
+  advance();
+}
+function countMistake(n,want){
+  C.mistakes++;C.missHere++;C.run=0;sfx.miss();owlMood('sad');
+  const egg=$(`.egg[data-i="${C.pos}"]`);egg&&egg.classList.add('shake');setTimeout(()=>egg&&egg.classList.remove('shake'),500);
+  const prev=C.seq[C.pos-1],a=Math.abs(C.step),dir=C.step>0?'plus':'minus';let msg;
+  if(prev==null)msg=`Oops! We start counting at ${want}. Say ${want}!`;
+  else if(C.missHere===1){
+    if(a>1&&n===prev+Math.sign(C.step))msg=`Oops, you said ${n}. We're counting by ${STEPW[a]}, not by ones! What is ${prev} ${dir} ${a}?`;
+    else msg=`Oops, not ${n}. What is ${prev} ${dir} ${a}?`;
+  }else{C.hint=C.pos;msg=`That's okay! ${prev} ${dir} ${a} is ${want}. Can you say ${want}?`}
+  setBubble(msg);drawEggs();
+  speak(msg,null,()=>listenSoon());
+}
+function countHelp(){
+  stopListen();if(!C||C.over||C.who[C.pos]!=='kid')return;
+  const want=C.seq[C.pos],prev=C.seq[C.pos-1],a=Math.abs(C.step),up=C.step>0,sg=Math.sign(C.step);
+  C.hint=C.pos;C.helped=(C.helped||0)+1;drawEggs();
+  let msg;
+  if(prev==null)msg=`We start at ${want}!`;
+  else if(a<=5){const steps=[];for(let k=1;k<=a;k++)steps.push(prev+k*sg);msg=`Start at ${prev} and count ${up?'up':'down'} ${a}: ${steps.join(', ')}. So it's ${want}!`}
+  else if(a===10)msg=`When we ${up?'add':'take away'} ten, the tens digit goes ${up?'up':'down'} by one. ${prev} becomes ${want}!`;
+  else msg=`When we ${up?'add':'take away'} one hundred, the hundreds digit goes ${up?'up':'down'} by one. ${prev} becomes ${want}!`;
+  setBubble(msg);speak(msg,null,()=>listenSoon());
+}
+function countVoice(alts,isFinal){
+  const h=$('#heard');h&&(h.textContent=`I heard: "${String(alts[0]).trim()}"`);
+  if(!isFinal||!C||C.over)return;
+  const up=C.seq.slice(C.pos);
+  let best=parseNums(alts[0],up);
+  for(const a of alts){const p=parseNums(a,up).filter(n=>{const at=C.seq.indexOf(n);return!(at>-1&&at<C.pos)});if(p[0]===C.seq[C.pos]){best=parseNums(a,up);break}}
+  if(!best.length){C.silent++;setBubble('Hmm, I didn\'t hear a number. Try again, nice and loud!');speak('Say the number nice and loud!',null,()=>listenSoon());return}
+  C.silent=0;countInput(best);
+}
+function countSilent(){
+  if(!C||C.over)return;C.silent++;
+  if(C.silent>=2){C.auto=false;setBubble('Take your time! Tap the red microphone when you\'re ready.');return}
+  const prev=C.seq[C.pos-1];const msg=prev!=null?`Your turn! What comes after ${prev}?`:'Your turn!';setBubble(msg);speak(msg,null,()=>listenSoon());
+}
+function finishCount(){
+  if(C.over)return;C.over=true;stopListen();drawEggs();
+  const eggs=app.querySelectorAll('.egg');eggs.forEach((e,i)=>setTimeout(()=>e.classList.add('hatch'),i*60));
+  const L=C.L,perfect=C.mistakes===0&&!C.helped;
+  const base=perfect?3:C.mistakes<=2?2:1,bonus=(C.seq.length>=20?1:0)+(L.g>=2?1:0),stars=base+bonus;
+  S.stars+=stars;S.count.runs++;S.count.best=Math.max(S.count.best,...C.seq);
+  const d=S.count.done[L.id]||(S.count.done[L.id]={runs:0,perfect:0});d.runs++;if(perfect)d.perfect++;
+  S.count.log=(S.count.log||[]).concat([{d:Date.now(),lesson:L.name,mode:C.mode,miss:C.mistakes}]).slice(-30);
+  // Chicky keeps guessing the right level
+  let lvlMsg='';const g=S.grade.count??0;
+  if(C.mistakes>=5){S.count.hard=(S.count.hard||0)+1}else S.count.hard=0;
+  if(g<2&&LESSONS.filter(l=>l.g===g).every(l=>isPerfect(l.id))){S.grade.count=g+1;lvlMsg=`You finished all the ${gradeName(g)} counting! Chicky moved you up to ${gradeName(g+1)} lessons!`}
+  else if(S.count.hard>=2&&g>0&&L.g>=g){S.grade.count=g-1;S.count.hard=0;lvlMsg='Chicky picked some easier lessons to warm up your counting muscles. You\'ll be back up soon!'}
+  S.count.lesson=null;
+  const next=recommendLesson();
+  const nudge=lvlMsg||(perfect?(next.id!==L.id?`You counted perfectly! Next, try ${next.name}!`:'Perfect counting! You are a counting champion!'):`You fixed ${C.mistakes===1?'your mistake':'every mistake'}. Let's practise again to make it perfect!`);
+  const startStars=C.startStars,mode=C.mode,seq=C.seq;
+  setTimeout(()=>celebrate({startStars,stars,title:perfect?`Perfect counting, ${S.kid}!`:`You did it, ${S.kid}!`,
+    line:`You counted ${L.step<0?'backwards ':''}by ${STEPW[Math.abs(L.step)]} from ${seq[0]} to ${seq[seq.length-1]} and earned ${stars} star${stars===1?'':'s'}.`,
+    extra:`<div class="eggs small">${seq.map(n=>`<div class="egg done hatch ${String(n).length>=3?'wide':''}"><span><span class="chick">🐥</span>${n}</span></div>`).join('')}</div>`,
+    nudge,againLabel:perfect&&next.id!==L.id?`Try ${next.name}`:'Count again',
+    again:()=>startCount(mode,perfect?next.id:L.id),
+    other:{label:'Spelling',fn:startRound}}),C.seq.length*60+900);
+}
+
+/* ---------- LEVEL CHECK (Chicky guesses the student's level) ---------- */
+const PL_SPELL=[
+ {g:0,w:'cat',s:'The cat says meow.',o:['cat','kat','cta']},{g:0,w:'sun',s:'The sun is hot.',o:['sun','son','snu']},{g:0,w:'big',s:'An elephant is big.',o:['big','bigg','beg']},
+ {g:1,w:'ship',s:'The ship sails on the sea.',o:['ship','sip','shipe']},{g:1,w:'frog',s:'The frog can hop.',o:['frog','forg','frag']},{g:1,w:'play',s:'Let\'s play outside.',o:['play','plai','paly']},{g:1,w:'duck',s:'The duck says quack.',o:['duck','duk','dukc']},
+ {g:2,w:'cake',s:'The cake is yummy.',o:['cake','caek','kak']},{g:2,w:'rain',s:'Rain falls from the clouds.',o:['rain','rane','rian']},{g:2,w:'friend',s:'You are my best friend.',o:['friend','frend','freind']},{g:2,w:'because',s:'I smile because I am happy.',o:['because','becuz','becase']},{g:2,w:'night',s:'The moon shines at night.',o:['night','nite','niht']}];
+const PL_COUNT=[
+ {g:0,show:[2,4,6],a:8},{g:0,show:[10,20,30],a:40},{g:0,show:[4,6,8],a:10},
+ {g:1,show:[5,10,15],a:20},{g:1,show:[12,14,16],a:18},{g:1,show:[30,40,50],a:60},{g:1,show:[20,25,30],a:35},
+ {g:2,show:[100,200,300],a:400},{g:2,show:[23,33,43],a:53},{g:2,show:[20,18,16],a:14},{g:2,show:[35,40,45],a:50},{g:2,show:[70,60,50],a:40}];
+let P=null;
+function placementIntro(){
+  stopListen();VH=null;
+  app.innerHTML=`<section class="screen">
+   <div class="stage home-stage">${owl('cheer')}<div class="screen" style="gap:10px;min-width:0"><h1>Hello${S.kid&&S.kid!=='Buddy'?', '+esc(S.kid):''}!</h1><div class="bubble" id="bubble">I'm Chicky, your school helper! What grade are you in?</div></div></div>
+   <div class="gradepick">${[0,1,2].map(g=>`<button class="act" data-g="${g}"><span class="act-name">${gradeName(g)}</span></button>`).join('')}<button class="act" data-g="-1"><span class="act-name">I'm not sure</span><span class="act-sub">Chicky will guess!</span></button></div>
+   ${S.placed?'<div class="actions"><button class="btn" id="hm">Back home</button></div>':''}
+  </section>`;
+  cluck(3);speak("Hello! I'm Chicky, your school helper! What grade are you in?");
+  app.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{sfx.tap();const g=+b.dataset.g;placementReady(g)});
+  $('#hm')&&($('#hm').onclick=home);
+}
+function placementReady(g){
+  const msg=g<0?'No problem! Let\'s play a quick game, and I\'ll guess the best lessons for you.':`${gradeName(g)}, wow! Let's play a quick game so I can pick the best lessons for you.`;
+  app.innerHTML=`<section class="screen" style="align-items:center;text-align:center">
+   ${owl('cheer')}<div class="bubble" id="bubble" style="max-width:520px">${esc(msg)}</div>
+   <p class="muted">8 quick questions: 4 spelling and 4 counting. It's okay to guess!</p>
+   <div class="actions"><button class="btn go big" id="go">Let's play!</button><button class="btn ghost" id="skip">Skip the game</button></div></section>`;
+  speak(msg);
+  $('#go').onclick=()=>startPlacement(g<0?1:g,g);
+  $('#skip').onclick=()=>{const gg=g<0?1:g;finishPlacement(gg,gg)};
+}
+function startPlacement(g,chosen){P={d:{spell:g,count:g},asked:new Set(),log:[],i:0,total:8,chosen};nextPlacement()}
+function nextPlacement(){
+  if(P.i>=P.total)return placementResult();
+  const subj=P.i%2===0?'spell':'count',d=P.d[subj],bank=subj==='spell'?PL_SPELL:PL_COUNT;
+  const fresh=bank.filter(q=>q.g===d&&!P.asked.has(q));const q=fresh.length?pick(fresh):pick(bank.filter(q=>q.g===d));
+  P.asked.add(q);P.q={subj,q,d,answered:false};renderPlacement();
+}
+function renderPlacement(){
+  const {subj,q}=P.q;
+  const top=`<div class="topbar"><button class="btn small" id="quit">Stop</button><div class="dots" aria-hidden="true"><span class="cprog"><i style="width:${P.i/P.total*100}%"></i></span></div><span class="lvlpill lv0">Level check</span></div>`;
+  if(subj==='spell'){
+    app.innerHTML=`<section class="screen">${top}
+     <div class="stage"><div id="owlbox">${owl()}</div><div class="bubble" id="bubble">Which word says “${esc(q.w)}”?</div></div>
+     <div class="listen"><button class="btn blue" id="hear">Hear word</button></div>
+     <div class="wordopts">${shuffle(q.o).map(w=>`<button class="wordopt" data-w="${esc(w)}">${esc(w)}</button>`).join('')}</div></section>`;
+    const say=()=>speak(`Which word says ${q.w}? ${q.s} ${q.w}.`);say();$('#hear').onclick=say;
+    app.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>answerPlacement(b.dataset.w,b));
+    VH=null;
+  }else{
+    const opts=shuffle([...new Set([q.a,q.a+1,q.a-1,q.show[2]+(q.show[2]-q.show[1])*2].filter(x=>x>=0&&x!==q.a))]).slice(0,2).concat([q.a]);
+    app.innerHTML=`<section class="screen">${top}
+     <div class="stage"><div id="owlbox">${owl()}</div><div class="bubble" id="bubble">What number comes next?</div></div>
+     <div class="eggs placement">${q.show.map(n=>`<div class="egg given ${String(n).length>=3?'wide':''}"><span>${n}</span></div>`).join('')}<div class="egg now"><span>?</span></div></div>
+     ${micOK?`<button class="mic" id="mic" aria-label="Tap and say the number"><svg><use href="#i-mic"/></svg></button><div class="miclabel" id="miclabel">Tap me and say the number</div><div class="heard" id="heard"></div>`:''}
+     <div class="choices"><p class="note">${micOK?'Or tap the number:':'Tap the number:'}</p><div class="row" style="justify-content:center">${shuffle(opts).map(n=>`<button class="numbtn" data-n="${n}">${n}</button>`).join('')}</div></div></section>`;
+    VH={result:(alts,fin)=>{const h=$('#heard');h&&(h.textContent=`I heard: "${String(alts[0]).trim()}"`);if(!fin)return;let n=null;for(const a of alts){const v=parseNums(a,[q.a]).find(x=>!q.show.includes(x));if(v===q.a){n=v;break}if(n==null&&v!=null)n=v}if(n!=null)answerPlacement(n);else setBubble('Say the next number, or tap it!')},
+      noSpeech:()=>setBubble('Say the next number, or tap it!'),idle:'Tap me and say the number',listening:'I\'m listening…'};
+    $('#mic')&&($('#mic').onclick=toggleListen);
+    speak(`What comes next? ${q.show.join(', ')}…`,null,()=>{if(micOK&&P&&P.q.q===q&&!P.q.answered)startListen()});
+    app.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{stopListen();answerPlacement(+b.dataset.n,b)});
+  }
+  $('#quit').onclick=()=>{hush();stopListen();P=null;S.placed?home():placementIntro()};
+}
+function answerPlacement(val,btn){
+  if(!P||P.q.answered)return;P.q.answered=true;stopListen();
+  const {subj,q,d}=P.q,right=subj==='spell'?q.w:q.a,ok=val===right;
+  P.log.push({subj,g:d,ok});P.d[subj]=ok?Math.min(2,d+1):Math.max(0,d-1);
+  app.querySelectorAll('[data-w],[data-n]').forEach(b=>{const v=b.dataset.w??+b.dataset.n;if(v===right)b.classList.add('right');else if(b===btn)b.classList.add('wrongpick')});
+  const msg=ok?pick(['Yes! Great job!','Correct! You\'re smart!','You got it!','Egg-cellent!']):`Good try! The answer is ${right}.`;
+  setBubble(msg);owlMood(ok?'cheer':'sad');ok?(cluck(2),tone([660,880],0.08,'sine',0.15)):tone([440,392],0.12,'triangle',0.12);
+  speak(msg,null,()=>{P.i++;setTimeout(nextPlacement,300)});
+}
+function estimate(subj){
+  const L=P.log.filter(x=>x.subj===subj);let est=0;
+  for(const g of [0,1,2]){const at=L.filter(x=>x.g===g),ok=at.filter(x=>x.ok).length;if(ok&&ok>=at.length-ok)est=g}
+  return est;
+}
+function placementResult(){
+  VH=null;const sp=estimate('spell'),ct=estimate('count');P.res={spell:sp,count:ct};
+  const draw=()=>{
+    const r=P.res;
+    app.innerHTML=`<section class="screen" style="align-items:center;text-align:center">
+     ${owl('cheer')}<h1>All done!</h1>
+     <div class="bubble" id="bubble" style="max-width:560px">I think you're a <b>${gradeName(r.spell)} speller</b> and a <b>${gradeName(r.count)} counter</b>! I picked lessons just for you.</div>
+     <div class="card" style="width:100%;max-width:560px"><h3>Not quite right? Change it here</h3>
+      <div class="lvrow"><span>Spelling</span>${[0,1,2].map(g=>`<button class="chipbtn ${g===r.spell?'sel':''}" data-s="${g}">${gradeName(g)}</button>`).join('')}</div>
+      <div class="lvrow"><span>Counting</span>${[0,1,2].map(g=>`<button class="chipbtn ${g===r.count?'sel':''}" data-c="${g}">${gradeName(g)}</button>`).join('')}</div>
+      <p class="muted" style="font-size:14px">Chicky keeps watching how it goes and moves the level up or down by itself.</p></div>
+     <div class="actions"><button class="btn go big" id="ok">Let's start!</button></div></section>`;
+    app.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{P.res.spell=+b.dataset.s;sfx.tap();draw()});
+    app.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{P.res.count=+b.dataset.c;sfx.tap();draw()});
+    $('#ok').onclick=()=>finishPlacement(P.res.spell,P.res.count);
+  };
+  draw();sfx.win();confetti(120);
+  speak(`Bok bok! All done! I think you're a ${gradeName(sp)} speller and a ${gradeName(ct)} counter! I picked lessons just for you.`);
+}
+function finishPlacement(sp,ct){
+  hush();setSpellGrade(sp);S.grade.count=ct;S.count.lesson=null;S.placed=true;S.spellHist=[];save();P=null;home();
 }
 
 /* ---------- STICKER BOOK ---------- */
@@ -510,7 +1024,9 @@ function book(){
   stopListen();
   app.innerHTML=`<section class="screen"><div class="row spread"><button class="btn small" id="hm">Home</button><span class="starpill">${star()} ${S.stars}</span></div>
    <h1>My sticker book</h1><p class="muted">Every ${STARS_PER_STICKER} stars unlocks a new sticker. Tap a sticker!</p>
-   <div class="book">${STICKERS.map(s=>S.stickers.includes(s)?`<button class="sticker got" data-s="${s}" aria-label="sticker">${s}</button>`:`<div class="sticker locked">?</div>`).join('')}</div></section>`;
+   <div class="book">${STICKERS.map(s=>S.stickers.includes(s)?`<button class="sticker got" data-s="${s}" aria-label="sticker">${s}</button>`:`<div class="sticker locked">?</div>`).join('')}</div>
+   <h2>My badges</h2><p class="muted">Keep practising to earn them all!</p>
+   <div class="badges">${BADGES.map(b=>{const g=S.badges.includes(b.id);return`<div class="badge ${g?'got':''}"><span class="medal ${g?'got':''}">${g?b.icon:'?'}</span><b>${esc(b.name)}</b><small>${esc(b.desc)}</small></div>`}).join('')}</div></section>`;
   $('#hm').onclick=home;
   app.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{sfx.tap();b.animate([{transform:'scale(1)'},{transform:'scale(1.3) rotate(10deg)'},{transform:'scale(1)'}],{duration:400})});
 }
@@ -548,6 +1064,20 @@ function parent(){
    <div class="card"><div class="row spread"><h3>Word lists</h3><button class="btn blue" id="newl">+ New list</button></div><div class="lists">${listsH}</div></div>
    <div class="card"><h3>Progress: ${L?esc(L.name):''}</h3><p class="muted" style="font-size:14px">Each word starts at "Copy it" (the word is shown), then "Fill the gaps" (some letters given), then "Spell it" (from memory, with clues). A clean try moves a word up a level, and a missed word moves back down. Tricky and new words come first.</p>
      <div class="tablewrap"><table><thead><tr><th>Word</th><th>Practised</th><th>First try</th><th>Level</th><th>Misses</th><th>Status</th></tr></thead><tbody>${rows||'<tr><td colspan="6">No words yet.</td></tr>'}</tbody></table></div></div>
+   <div class="card"><h3>Skip counting</h3>
+     <p>Played ${S.count.runs} time${S.count.runs===1?'':'s'} · highest number: ${S.count.best||'–'} · perfect runs: ${S.count.perfect} · lessons mastered: ${LESSONS.filter(l=>isPerfect(l.id)).length} of ${LESSONS.length}</p>
+     <p class="muted" style="font-size:14px">Practice streak: ${streakNow()} day${streakNow()===1?'':'s'} (best ${S.days.best||0}). Today: ${todayCount()} of ${GOAL} practices. Badges: ${S.badges.length} of ${BADGES.length}.</p>
+     ${(S.count.log||[]).length?`<div class="tablewrap"><table><thead><tr><th>Date</th><th>Lesson</th><th>Game</th><th>Mistakes</th></tr></thead><tbody>${S.count.log.slice(-6).reverse().map(r=>`<tr><td>${new Date(r.d).toLocaleDateString()}</td><td>${esc(r.lesson||('By 2s to '+r.max))}</td><td>${MODES[r.mode]?MODES[r.mode].name:''}</td><td>${r.miss}</td></tr>`).join('')}</tbody></table></div>`:''}
+   </div>
+   <div class="card"><h3>Level and voice</h3>
+     <p class="muted" style="font-size:14px">Chicky guesses the level with a quick game, then moves it up after two great rounds or down after two hard ones. You can set it yourself here.</p>
+     <div class="homegrid">
+      <label for="gs">Spelling level<select id="gs">${[0,1,2].map(g=>`<option value="${g}" ${(S.grade.spell??1)===g?'selected':''}>${gradeName(g)}</option>`).join('')}</select></label>
+      <label for="gc">Counting level<select id="gc">${[0,1,2].map(g=>`<option value="${g}" ${(S.grade.count??1)===g?'selected':''}>${gradeName(g)}</option>`).join('')}</select></label>
+      <label for="vc">Chicky's voice<select id="vc"><option value="chicky" ${S.voice==='chicky'?'selected':''}>Chicken voice with clucks</option><option value="normal" ${S.voice!=='chicky'?'selected':''}>Normal voice</option></select></label>
+     </div>
+     <div class="row"><button class="btn" id="relevel">Run the level check again</button><button class="btn" id="hearv">Test the voice</button></div>
+   </div>
    <div class="card"><h3>Settings</h3>
      <div class="homegrid">
       <label for="kn">Child's name<input id="kn" type="text" value="${esc(S.kid)}"></label>
@@ -558,7 +1088,7 @@ function parent(){
       <label style="flex-direction:row;align-items:center;gap:10px" for="sc"><input id="sc" type="checkbox" ${S.scramble?'checked':''} style="width:22px;height:22px"> Include "mixed-up blocks" puzzles</label>
      </div>
      <p class="muted" style="font-size:14px">Voice typing ${(SR||AB)?'is supported in this browser (it asks for the microphone the first time).':'is not supported in this browser. Chrome or Safari works best.'} Words and progress are saved on this device.</p>
-     <div class="row">${confirmReset?`<span class="confirm">Reset all stars, stickers and progress? <button class="btn small danger" id="resyes">Reset</button><button class="btn small" id="resno">Cancel</button></span>`:`<button class="btn" id="reset">Reset stars & progress</button>`}</div>
+     <div class="row">${confirmReset?`<span class="confirm">Reset all stars, stickers, badges and progress? <button class="btn small danger" id="resyes">Reset</button><button class="btn small" id="resno">Cancel</button></span>`:`<button class="btn" id="reset">Reset stars & progress</button>`}</div>
    </div></section>`;
   $('#hm').onclick=()=>{editing=null;confirmDel=null;confirmReset=false;home()};
   $('#newl').onclick=()=>{const id='l'+Date.now();S.lists.push({id,name:'New list',words:[]});editing=id;save();parent();setTimeout(()=>$('#ln')&&$('#ln').select(),0)};
@@ -573,6 +1103,11 @@ function parent(){
     $('#cancell').onclick=()=>{if(!E.words.length&&E.name==='New list'&&S.lists.length>1){S.lists=S.lists.filter(l=>l!==E);save()}editing=null;parent()};
   }
   $('#kn').onchange=e=>{S.kid=e.target.value.trim()||'Buddy';save()};
+  $('#gs').onchange=e=>{setSpellGrade(+e.target.value);S.spellHist=[];save();toast(`Spelling set to ${gradeName(+e.target.value)}`);parent()};
+  $('#gc').onchange=e=>{S.grade.count=+e.target.value;S.count.lesson=null;save();toast(`Counting set to ${gradeName(+e.target.value)}`)};
+  $('#vc').onchange=e=>{S.voice=e.target.value;save();cluck(2);speak('Bok bok! Hi, I am Chicky!')};
+  $('#hearv').onclick=()=>{cluck(2);speak('Bok bok! Hi, I am Chicky, your school helper!')};
+  $('#relevel').onclick=()=>{editing=null;placementIntro()};
   $('#rs').onchange=e=>{S.roundSize=+e.target.value;save()};
   $('#rt').oninput=e=>{S.rate=+e.target.value;$('#rtv').textContent=S.rate.toFixed(1);save()};
   $('#rt').onchange=()=>speak('This is how fast I will talk.');
@@ -581,10 +1116,10 @@ function parent(){
   $('#sk').onchange=e=>{S.simpleKeys=e.target.checked;save()};
   $('#reset')&&($('#reset').onclick=()=>{confirmReset=true;parent()});
   $('#resno')&&($('#resno').onclick=()=>{confirmReset=false;parent()});
-  $('#resyes')&&($('#resyes').onclick=()=>{S.stars=0;S.stickers=[];S.stats={};confirmReset=false;save();parent();toast('Progress reset')});
+  $('#resyes')&&($('#resyes').onclick=()=>{S.stars=0;S.stickers=[];S.stats={};S.badges=[];S.days={date:'',streak:0,today:0,best:0};S.count={runs:0,best:0,perfect:0,mode:'together',lesson:null,done:{}};S.spellHist=[];confirmReset=false;save();parent();toast('Progress reset')});
 }
 
-home();
+S.placed?home():placementIntro();
 })();
 </script>
 </body>
